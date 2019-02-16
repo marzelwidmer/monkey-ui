@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { Alert } from "reactstrap"
 
-import imgA from "./blue-green-1.jpg"
-import imgB from "./blue-green-2.png"
+import imgA from "./blue-green-1.png"
+import imgB from "./blue-green-2.jpg"
 
 
 export default class BgDeployment extends Component {
