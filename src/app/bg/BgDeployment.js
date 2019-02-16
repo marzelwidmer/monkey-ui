@@ -49,12 +49,14 @@ export default class BgDeployment extends Component {
  
     return (    
       <div id="layout-content" className="layout-content-wrapper">
-        <div className="panel-list">   
+        <div className="panel-list"> 
+        <p>  
         Switch router : <br/>
         <code>
           oc patch route/bluegreen -p <br/>
           '&#123;"spec":&#123;"to":&#123;"name":"{`${this.state.actuator.git.branch === "feature2" ? "feature1" : "feature2"}`}"&#125;&#125;&#125;'
         </code> 
+        </p>
         <div>&nbsp;</div>
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
             Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>

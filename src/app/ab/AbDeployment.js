@@ -40,7 +40,17 @@ export default class AbDeployment extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (    
       <div id="layout-content" className="layout-content-wrapper">
-        <div className="panel-list">     
+        <div className="panel-list"> 
+        <p> Set router 80/20 : <br/>
+        <code>
+            oc set route-backends ab-route feature1=80 feature2=20
+        </code> 
+        </p>
+        <p>Set +10% for feature1 : <br/>
+        <code>
+          oc set route-backends ab-route --adjust feature1=+10%
+        </code> 
+        </p>
           <div>
             <RoutingTable />
           </div>
