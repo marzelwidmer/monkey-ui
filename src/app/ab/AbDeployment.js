@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Alert } from "reactstrap"
+import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 
 import imgA from "./ab-testing-1.png"
 import imgB from "./ab-testing-2.png"
@@ -40,13 +41,40 @@ export default class AbDeployment extends Component {
     return (    
       <div id="layout-content" className="layout-content-wrapper">
         <div className="panel-list">     
-          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
-            Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>
-            Version : <i><b> {this.state.actuator.build.version} </b></i>
-          </Alert>
-          <img src={`${this.state.actuator.git.branch === "feature2" ? imgB : imgA}`} width="400" height="200" alt="ab" />
+          <div>
+            <RoutingTable />
+          </div>
+          <div>&nbsp;</div>
+          <div>
+            <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
+              Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>
+              Version : <i><b> {this.state.actuator.build.version} </b></i>
+            </Alert>
+            <img src={`${this.state.actuator.git.branch === "feature2" ? imgB : imgA}`} width="400" height="200" alt="ab" />
+          </div>
         </div>
       </div>
     )
   }
 }
+const RoutingTable = () => (
+  <Table celled>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell>NAME</Table.HeaderCell>
+        <Table.HeaderCell>HOST/PORT</Table.HeaderCell>
+        <Table.HeaderCell>SERVICES</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>
+          <Label ribbon>ab-route</Label>
+        </Table.Cell>
+        <Table.Cell>ab-route-dev.apps.c3smonkey.ch</Table.Cell>
+        <Table.Cell>feature1(80%),<br/>feature2(20%)</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+)
