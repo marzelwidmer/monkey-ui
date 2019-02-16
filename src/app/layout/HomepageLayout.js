@@ -1,8 +1,6 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Button,Container,Divider,Grid,Header,Icon,Image,List,Menu,Responsive,Segment,Sidebar,Visibility} from "semantic-ui-react"
-
-
+import {Container,Divider,Grid,Header,Icon,Image,List,Menu,Responsive,Segment,Sidebar,Visibility} from "semantic-ui-react"
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
