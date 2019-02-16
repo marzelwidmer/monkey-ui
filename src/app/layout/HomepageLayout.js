@@ -202,7 +202,9 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-             
+             {/* <Image bordered rounded size="large" fluid src="/images/ab-testing-1.png" alt="abtesting1" />
+             <Image bordered rounded size="large" fluid src="/images/ab-testing-2.png" alt="abtesting2" /> */}
+
              <AbDeployment />
 
           </Grid.Column>
