@@ -44,10 +44,8 @@ export default class AbDeployment extends Component {
         <div className="panel-list">
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
             Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>
-            Service version :{this.state.actuator.build.version}
+            Version : <i><b> {this.state.actuator.build.version} </b></i>
           </Alert>
-
-          
           <img src={`${this.state.actuator.git.branch === "feature2" ? abTesting2 : abTesting1}`} width="500" height="200"  alt="ab" />
         </div>
       </div>
