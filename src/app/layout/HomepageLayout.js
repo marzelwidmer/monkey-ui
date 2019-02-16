@@ -66,7 +66,7 @@ class DesktopContainer extends Component {
           <Segment inverted textAlign="center" style={{ minHeight: 700, padding: "1em 0em" }} vertical>
             <Menu fixed={fixed ? "top" : null} inverted={!fixed} pointing={!fixed} secondary={!fixed} size="large">
               <Container>
-                <Menu.Item href="home">Home</Menu.Item>
+                <Menu.Item href="#">Home</Menu.Item>
                 <Menu.Item href="#bg">Blue-Green</Menu.Item>
                 <Menu.Item href="#ab">A/B</Menu.Item>
               </Container>
@@ -99,7 +99,7 @@ class MobileContainer extends Component {
     return (
       <Responsive as={Sidebar.Pushable} getWidth={getWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
         <Sidebar as={Menu} animation="push" inverted onHide={this.handleSidebarHide} vertical visible={sidebarOpened}>
-                <Menu.Item href="home">Home</Menu.Item>
+                <Menu.Item href="#">Home</Menu.Item>
                 <Menu.Item href="#bg">Blue-Green</Menu.Item>
                 <Menu.Item href="#ab">A/B</Menu.Item>
         </Sidebar>
