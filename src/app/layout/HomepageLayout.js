@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Container,Divider,Grid,Header,Icon,Image,List,Menu,Responsive,Segment,Sidebar,Visibility} from "semantic-ui-react"
 import AbDeployment from "../ab/AbDeployment";
+import BgDeployment from "../bg/BgDeployment";
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -164,9 +165,10 @@ const HomepageLayout = () => (
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
 
-            <Image bordered rounded size="large" fluid src="/images/blue-green-1.jpg" alt="blue-green-1" />
-            <Image bordered rounded size="large" fluid src="/images/blue-green-2.png" alt="blue-green-2" />
-  
+            {/* <Image bordered rounded size="large" fluid src="/images/blue-green-1.jpg" alt="blue-green-1" />
+            <Image bordered rounded size="large" fluid src="/images/blue-green-2.png" alt="blue-green-2" /> */}
+            <BgDeployment service_url="http://bluegreen-dev.apps.c3smonkey.ch/actuator/info"/>
+
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -205,7 +207,7 @@ const HomepageLayout = () => (
              {/* <Image bordered rounded size="large" fluid src="/images/ab-testing-1.png" alt="abtesting1" />
              <Image bordered rounded size="large" fluid src="/images/ab-testing-2.png" alt="abtesting2" /> */}
 
-             <AbDeployment />
+             <AbDeployment service_url="http://ab-route-dev.apps.c3smonkey.ch/actuator/info"/>
 
           </Grid.Column>
         </Grid.Row>

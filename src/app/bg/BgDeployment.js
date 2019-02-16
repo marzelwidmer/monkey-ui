@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import { Alert } from "reactstrap"
 
-import imgA from "./ab-testing-1.png"
-import imgB from "./ab-testing-2.png"
+import imgA from "./blue-green-1.jpg"
+import imgB from "./blue-green-2.png"
 
-export default class AbDeployment extends Component {
+export default class BgDeployment extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,7 +44,7 @@ export default class AbDeployment extends Component {
             Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>
             Version : <i><b> {this.state.actuator.build.version} </b></i>
           </Alert>
-          <img src={`${this.state.actuator.git.branch === "feature2" ? imgB : imgA}`} width="400" height="200" alt="ab" />
+          <img src={`${this.state.actuator.git.branch === "feature2" ? imgB : imgA}`} width="400" height="200"  alt="ab" />
         </div>
       </div>
     )

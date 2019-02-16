@@ -47,5 +47,26 @@ oc rollout latest dc/monkey-ui
 oc rollback monkey-ui-1
 ```
 
+# Blue-Green
+## Switch Feature 1
+```bash
+oc patch route/bluegreen -p '{"spec":{"to":{"name":"feature1"}}}'
+```
+## Switch Feature 2
+```bash
+oc patch route/bluegreen -p '{"spec":{"to":{"name":"feature2"}}}'
+```
 
- 
+# A/B Testing
+## Set 80/20
+
+```bash
+oc set route-backends ab-route feature1=80 feature2=20
+```
+
+## Adjust +10%
+Set service feature1 +10% 
+```bash
+oc set route-backends ab-route --adjust feature1=+10%
+```
+
