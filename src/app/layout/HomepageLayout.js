@@ -20,7 +20,7 @@ const HomepageHeading = ({ mobile }) => (
     <a name="home"></a> 
     <Header
       as="h1"
-      content="Monkey-App"
+      content="Make JAR not WAR"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -154,7 +154,9 @@ const HomepageLayout = () => (
                 Blue-green deployments involve running two versions of an application at the same time and moving production traffic from the old version to the new version. There are several ways to implement a blue-green deployment in OpenShift Container Platform.
             </p>
             <Header as="h3" style={{ fontSize: "2em" }}>
-                When to Use a Blue-Green Deployment
+              <Divider as="h4" className="header" horizontal style={{ margin: "3em 0em", textTransform: "uppercase" }}>
+                    When to Use
+              </Divider>
             </Header>
             <p style={{ fontSize: "1.33em" }}>
             Use a blue-green deployment when you want to test a new version of your application in a production environment before moving traffic to it.
@@ -183,8 +185,12 @@ const HomepageLayout = () => (
             A/B deployments generally imply running two (or more) versions of the application code or application configuration at the same time for testing or experimentation purposes.
             The simplest form of an A/B deployment is to divide production traffic between two or more distinct shards — a single group of instances with homogeneous configuration and code.
             </p>
+            
+
             <Header as="h3" style={{ fontSize: "2em" }}>
-                When to Use an A/B Deployment
+              <Divider as="h4" className="header" horizontal style={{ margin: "3em 0em", textTransform: "uppercase" }}>
+                    When to Use
+              </Divider>
             </Header>
             <p style={{ fontSize: "1.33em" }}>
             <ul>
@@ -206,7 +212,7 @@ const HomepageLayout = () => (
 
 
 
-    <Segment style={{ padding: "8em 0em" }} vertical>
+{/*     <Segment style={{ padding: "8em 0em" }} vertical>
       <Container text>
         <Header as="h3" style={{ fontSize: "2em" }}>
           Breaking The Grid, Grabs Your Attention
@@ -216,9 +222,6 @@ const HomepageLayout = () => (
           by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth
           your attention.
         </p>
-        <Button as="a" size="large">
-          Read More
-        </Button>
 
         <Divider as="h4" className="header" horizontal style={{ margin: "3em 0em", textTransform: "uppercase" }}>
           <a href="#">Case Studies</a>
@@ -231,11 +234,12 @@ const HomepageLayout = () => (
           Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but it's really true.
           It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
         </p>
-        <Button as="a" size="large">
-          I'm Still Quite Interested
-        </Button>
+        
       </Container>
     </Segment>
+
+ */}
+
 
     <Segment inverted vertical style={{ padding: "5em 0em" }}>
       <Container>
@@ -244,26 +248,22 @@ const HomepageLayout = () => (
             <Grid.Column width={3}>
               <Header inverted as="h4" content="About" />
               <List link inverted>
-                <List.Item as="a">Sitemap</List.Item>
-                <List.Item as="a">Contact Us</List.Item>
-                <List.Item as="a">Religious Ceremonies</List.Item>
-                <List.Item as="a">Gazebo Plans</List.Item>
+                <List.Item as="a"><a href="https://github.com/c3smonkey" target="_blank">Github</a></List.Item>
+                <List.Item as="a"><a href="http://marcelwidmer.org" target="_blank">Marcel Widmer</a></List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as="h4" content="Services" />
               <List link inverted>
-                <List.Item as="a">Banana Pre-Order</List.Item>
-                <List.Item as="a">DNA FAQ</List.Item>
-                <List.Item as="a">How To Access</List.Item>
-                <List.Item as="a">Favorite X-Men</List.Item>
+                <List.Item href="http://ab-route-dev.apps.c3smonkey.ch/" target="_blank">MonkeyMongoService</List.Item>
+                <List.Item href="https://console.c3smonkey.ch:8443" target="_blank">Openshift</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as="h4" inverted>
-                Footer Header
+                Make JAR not WAR
               </Header>
-              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+              <p>Keep Calm - Production Rocks - The only place to be.</p>
             </Grid.Column>
           </Grid.Row>
         </Grid>
