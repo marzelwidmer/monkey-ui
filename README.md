@@ -28,12 +28,12 @@ so you need to run next commands to deploy next version of crimes service contai
 
 #### Update Image
 ```bash
-oc import-image monkey-ui:oshi --from=c3smonkey/monkey-ui:oshi
+oc import-image monkey-ui:latest --from=c3smonkey/monkey-ui:latest
 ```
 
 Then let's prepare the application so when next rollout command is applied, the new image is deployed:
 ```bash
-oc patch dc/monkey-ui -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["monkey-ui"],"from": {"name":"monkey-ui:oshi"}}}]}}'
+oc patch dc/monkey-ui -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["monkey-ui"],"from": {"name":"monkey-ui:latest"}}}]}}'
 ```
 
 And finally you can do the rollout of the application by using:
