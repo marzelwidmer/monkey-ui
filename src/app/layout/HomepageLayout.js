@@ -2,6 +2,8 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Button,Container,Divider,Grid,Header,Icon,Image,List,Menu,Responsive,Segment,Sidebar,Visibility} from "semantic-ui-react"
 
+
+
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
 // For more advanced usage please check Responsive docs under the "Usage" section.
@@ -15,6 +17,7 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile }) => (
   <Container text>
+    <a name="home"></a> 
     <Header
       as="h1"
       content="Monkey-App"
@@ -63,11 +66,9 @@ class DesktopContainer extends Component {
           <Segment inverted textAlign="center" style={{ minHeight: 700, padding: "1em 0em" }} vertical>
             <Menu fixed={fixed ? "top" : null} inverted={!fixed} pointing={!fixed} secondary={!fixed} size="large">
               <Container>
-                <Menu.Item as="a" active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as="a">Blue-Green</Menu.Item>
-                <Menu.Item as="a">A/B</Menu.Item>
+                <Menu.Item href="home">Home</Menu.Item>
+                <Menu.Item href="#bg">Blue-Green</Menu.Item>
+                <Menu.Item href="#ab">A/B</Menu.Item>
               </Container>
             </Menu>
             <HomepageHeading />
@@ -98,11 +99,9 @@ class MobileContainer extends Component {
     return (
       <Responsive as={Sidebar.Pushable} getWidth={getWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
         <Sidebar as={Menu} animation="push" inverted onHide={this.handleSidebarHide} vertical visible={sidebarOpened}>
-        <Menu.Item as="a" active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as="a">Blue-Green</Menu.Item>
-                <Menu.Item as="a">A/B</Menu.Item>
+                <Menu.Item href="home">Home</Menu.Item>
+                <Menu.Item href="#bg">Blue-Green</Menu.Item>
+                <Menu.Item href="#ab">A/B</Menu.Item>
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -143,6 +142,7 @@ ResponsiveContainer.propTypes = {
 
 const HomepageLayout = () => (
   <ResponsiveContainer>
+    <a name="bg"></a>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
@@ -171,6 +171,7 @@ const HomepageLayout = () => (
 
 
 
+    <a name="ab"></a> 
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
       <Grid.Row>
