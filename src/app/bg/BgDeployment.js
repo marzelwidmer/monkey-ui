@@ -4,7 +4,9 @@ import { Alert } from "reactstrap"
 import imgA from "./blue-green-1.jpg"
 import imgB from "./blue-green-2.png"
 
+
 export default class BgDeployment extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -35,11 +37,25 @@ export default class BgDeployment extends Component {
       .catch(e => console.log(e))
   }
 
+  // https://dev.w3.org/html5/html-author/charref
+  // &#8216;  ' 
+  // &#8220;  "
+  // &#123;   {
+  // &#125;   }
+
+  
   render() {
     if (!this.state.actuator) return <p>Loading...</p>
+ 
     return (    
       <div id="layout-content" className="layout-content-wrapper">
-        <div className="panel-list">     
+        <div className="panel-list">   
+        Switch router : <br/>
+        <code>
+          oc patch route/bluegreen -p <br/>
+          '&#123;"spec":&#123;"to":&#123;"name":"{`${this.state.actuator.git.branch === "feature2" ? "feature1" : "feature2"}`}"&#125;&#125;&#125;'
+        </code> 
+        <div>&nbsp;</div>
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
             Hit service <i><b>{this.state.actuator.build.artifact} </b></i>  {this.state.count} times. <br/>
             Version : <i><b> {this.state.actuator.build.version} </b></i>
@@ -50,3 +66,4 @@ export default class BgDeployment extends Component {
     )
   }
 }
+
