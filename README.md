@@ -13,7 +13,7 @@ oc new-project dev \
 
 ### Deploy App Docker Image
 ```bash
-oc new-app --docker-image=c3smonkey/monkey-ui:latest \
+oc new-app --docker-image=c3smonkey/monkey-ui:oshi \
      --name='monkey-ui' \
     -l name='monkey-ui' \
     -e SELECTOR=monkey-ui
@@ -29,12 +29,12 @@ so you need to run next commands to deploy next version of crimes service contai
 
 #### Update Image
 ```bash
-oc import-image monkey-ui:latest --from=c3smonkey/monkey-ui:latest
+oc import-image monkey-ui:oshi --from=c3smonkey/monkey-ui:oshi
 ```
 
 Then let's prepare the application so when next rollout command is applied, the new image is deployed:
 ```bash
-oc patch dc/monkey-ui -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["monkey-ui"],"from": {"name":"monkey-ui:latest"}}}]}}'
+oc patch dc/monkey-ui -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["monkey-ui"],"from": {"name":"monkey-ui:oshi"}}}]}}'
 ```
 
 And finally you can do the rollout of the application by using:

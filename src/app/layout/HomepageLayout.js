@@ -168,7 +168,8 @@ const HomepageLayout = () => (
             {/* <Image bordered rounded size="large" fluid src="/images/blue-green-1.jpg" alt="blue-green-1" />
             <Image bordered rounded size="large" fluid src="/images/blue-green-2.png" alt="blue-green-2" /> */}
             {/* <BgDeployment service_url="http://bluegreen-dev.apps.c3smonkey.ch/actuator/info"/> */}
-            <BgDeployment service_url="http://bluegreen-myhelsana-dev.oshi-poc.hel.kko.ch/actuator/info"/>
+            {/* <BgDeployment service_url="http://bluegreen-myhelsana-dev.oshi-poc.hel.kko.ch/actuator/info"/> */}
+            <BgDeployment service_url="http://bluegreen-dev.oshi-poc.hel.kko.ch/actuator/info"/>
 
           </Grid.Column>
         </Grid.Row>
@@ -209,7 +210,8 @@ const HomepageLayout = () => (
              <Image bordered rounded size="large" fluid src="/images/ab-testing-2.png" alt="abtesting2" /> */}
 
              {/* <AbDeployment service_url="http://ab-route-dev.apps.c3smonkey.ch/actuator/info"/> */}
-             <AbDeployment service_url="http://ab-route-myhelsana-dev.oshi-poc.hel.kko.ch/actuator/info"/>
+             {/* <AbDeployment service_url="http://ab-route-myhelsana-dev.oshi-poc.hel.kko.ch/actuator/info"/> */}
+             <AbDeployment service_url="http://ab-route-dev.oshi-poc.hel.kko.ch/actuator/info"/>
 
           </Grid.Column>
         </Grid.Row>
