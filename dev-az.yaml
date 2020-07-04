@@ -1,0 +1,140 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    app: nginx-skaffold
+    env: local-az
+  name: namespace-reader
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  - extensions
+  - apps
+  resources:
+  - configmaps
+  - pods
+  - services
+  - endpoints
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    app: nginx-skaffold
+    env: local-az
+  name: namespace-reader-binding
+  namespace: default
+roleRef:
+  apiGroup: ""
+  kind: Role
+  name: namespace-reader
+subjects:
+- apiGroup: ""
+  kind: ServiceAccount
+  name: default
+---
+apiVersion: v1
+data:
+  nginx.conf: |2
+        worker_processes auto;
+        error_log /var/opt/rh/rh-nginx116/log/nginx/error.log;
+        pid /var/opt/rh/rh-nginx116/run/nginx/nginx.pid;
+
+        # Load dynamic modules. See /opt/rh/rh-nginx116/root/usr/share/doc/README.dynamic.
+        include /opt/rh/rh-nginx116/root/usr/share/nginx/modules/*.conf;
+
+        events {
+            worker_connections  1024;
+        }
+
+        http {
+            log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                              '$status $body_bytes_sent "$http_referer" '
+                              '"$http_user_agent" "$http_x_forwarded_for"';
+
+            access_log  /var/opt/rh/rh-nginx116/log/nginx/access.log  main;
+
+            sendfile        on;
+            tcp_nopush      on;
+            tcp_nodelay     on;
+            keepalive_timeout  65;
+            types_hash_max_size 2048;
+
+            include       /etc/opt/rh/rh-nginx116/nginx/mime.types;
+            default_type  application/octet-stream;
+
+            server {
+                listen       8080 default_server;
+                listen       [::]:8080 default_server;
+                server_name  _;
+                root         /opt/app-root/src;
+
+                location / {
+                   try_files $uri /nginx-skaffold/index.html =404;
+                }
+            }
+        }
+kind: ConfigMap
+metadata:
+  labels:
+    app: nginx-skaffold
+    env: local-az
+  name: nginx-skaffold-config-49cc4cc5m5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    component: fsl-frontend
+  labels:
+    app: nginx-skaffold
+    env: local-az
+  name: nginx-skaffold
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: nginx-skaffold
+    env: local-az
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    component: fsl-frontend
+  labels:
+    app: nginx-skaffold
+    env: local-az
+  name: nginx-skaffold
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-skaffold
+      env: local-az
+  template:
+    metadata:
+      annotations:
+        component: fsl-frontend
+      labels:
+        app: nginx-skaffold
+        env: local-az
+    spec:
+      containers:
+      - image: nginx-skaffold
+        imagePullPolicy: IfNotPresent
+        name: nginx-skaffold
+        ports:
+        - containerPort: 8080
+          name: 8080-tcp
+          protocol: TCP

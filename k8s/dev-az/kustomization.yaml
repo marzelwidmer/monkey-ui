@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  env: local-az
+  app: nginx-skaffold
+
+resources:
+  - ../base/
+  - roles.yaml
+
+patchesStrategicMerge:
+  - patch-service.yaml
+  - patch-deployment.yaml
+  # - use-configmap.yaml
+
+configMapGenerator:
+  - name: nginx-skaffold-config
+    files:
+      - ./config-files/nginx.conf
+
