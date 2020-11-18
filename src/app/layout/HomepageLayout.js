@@ -17,7 +17,7 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile }) => (
   <Container text>
-    <a name="home"></a> 
+    <a name="home"></a>
     <Header
       as="h1"
       content="Make JAR not WAR"
@@ -167,7 +167,8 @@ const HomepageLayout = () => (
 
             {/* <Image bordered rounded size="large" fluid src="/images/blue-green-1.jpg" alt="blue-green-1" />
             <Image bordered rounded size="large" fluid src="/images/blue-green-2.png" alt="blue-green-2" /> */}
-            <BgDeployment service_url="http://bluegreen-dev.apps.c3smonkey.ch/actuator/info"/>
+            {/*<BgDeployment service_url="http://bluegreen-dev.apps.c3smonkey.ch/actuator/info"/>*/}
+            <BgDeployment service_url="http://minikube.me/actuator/info"/>
 
           </Grid.Column>
         </Grid.Row>
@@ -176,7 +177,7 @@ const HomepageLayout = () => (
 
 
 
-    <a name="ab"></a> 
+    <a name="ab"></a>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
       <Grid.Row>
@@ -188,7 +189,7 @@ const HomepageLayout = () => (
             A/B deployments generally imply running two (or more) versions of the application code or application configuration at the same time for testing or experimentation purposes.
             The simplest form of an A/B deployment is to divide production traffic between two or more distinct shards — a single group of instances with homogeneous configuration and code.
             </p>
-            
+
 
             <Header as="h3" style={{ fontSize: "2em" }}>
               <Divider as="h4" className="header" horizontal style={{ margin: "3em 0em", textTransform: "uppercase" }}>
@@ -240,7 +241,7 @@ const HomepageLayout = () => (
           Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but it's really true.
           It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
         </p>
-        
+
       </Container>
     </Segment>
 

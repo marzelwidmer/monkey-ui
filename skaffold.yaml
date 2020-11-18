@@ -1,17 +1,16 @@
-apiVersion: skaffold/v2beta5
+apiVersion: skaffold/v2beta21
 kind: Config
 build:
   artifacts:
-  - image: nginx-skaffold
-    context: .
+  - image: monkey-ui
+    custom:
+      buildCommand: yarn install && yarn build && docker build -t monkey-ui:latest
+        --build-arg BUILD_IMAGE=registry.access.redhat.com/ubi8/nginx-118:latest -f
+        container/monkey-ui/Dockerfile .
+  tagPolicy:
+    sha256: {}
   local: {}
-# deploy:
-#   kubectl:
-#     manifests:
-#     - k8s-*
-profiles:
-  - name: local-az
-    deploy:
-      kustomize:
-        paths:
-        - k8s/local-az
+deploy:
+  kubectl:
+    manifests:
+    - k8s/*

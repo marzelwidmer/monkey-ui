@@ -31,11 +31,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^6.1.0",
-    "@semantic-release/npm": "^5.1.4",
-    "@semantic-release/release-notes-generator": "^7.1.4",
     "css-loader": "^2.1.0",
-    "semantic-release": "^15.0.0",
     "terser": "^3.16.1"
   }
 }
