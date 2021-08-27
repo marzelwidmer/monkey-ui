@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: monkeyui-fronetend
+spec:
+  host: ""
+  port:
+    targetPort: 80-8080
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: app
+    weight: 100
+  wildcardPolicy: None

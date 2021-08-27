@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: monkey-ui-frontend
+    appGroup: demo
+    scrape: prometheus-spring-boot
+  name: monkey-ui-frontend
+  namespace: default
+spec:
+  ports:
+  - name: 80-8080
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: monkey-ui-frontend
+    appGroup: demo
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: monkey-ui-frontend
+    appGroup: demo
+  name: monkey-ui-frontend
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: monkey-ui-frontend
+      appGroup: demo
+  template:
+    metadata:
+      labels:
+        app: monkey-ui-frontend
+        appGroup: demo
+    spec:
+      containers:
+      - image: monkey-ui:latest
+        imagePullPolicy: IfNotPresent
+        name: monkey-ui
+      restartPolicy: Always

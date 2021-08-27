@@ -11,6 +11,6 @@ build:
     sha256: {}
   local: {}
 deploy:
-  kubectl:
-    manifests:
-    - k8s/*
+  kustomize:
+    paths:
+      - k8s/installs/local
