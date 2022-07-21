@@ -32,6 +32,6 @@
   ],
   "devDependencies": {
     "css-loader": "^2.1.0",
-    "terser": "^3.16.1"
+    "terser": "^4.8.1"
   }
 }
